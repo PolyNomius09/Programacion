@@ -135,7 +135,8 @@ class Tienda {
       cantidadTelefonos--;
       System.out.println("Teléfono vendido con éxito: " + telefonoVendido);
     }
-  public void hacerLlamada() {
+    
+    public void hacerLlamada() {
     if (cantidadTelefonos >= 1 && cantidadTelefonos <= cantidadTelefonos) {
       Telefono telefono = inventario[cantidadTelefonos - 1];
       telefono.hacerLlamada();
@@ -144,7 +145,7 @@ class Tienda {
     }
   }
 
-  public void enviarMensaje() {
+    public void enviarMensaje() {
     if (cantidadTelefonos >= 1 && cantidadTelefonos <= cantidadTelefonos) {
       Telefono telefono = inventario[cantidadTelefonos - 1];
       telefono.enviarMensaje();
@@ -153,7 +154,7 @@ class Tienda {
     }
   }
 
-  public void instalarAplicacion() {
+    public void instalarAplicacion() {
     if (cantidadTelefonos >= 1 && cantidadTelefonos <= cantidadTelefonos) {
       Telefono telefono = inventario[cantidadTelefonos - 1];
       telefono.instalarAplicacion();
@@ -162,7 +163,7 @@ class Tienda {
     }
   }
 
-  public void abrirAplicacion() {
+    public void abrirAplicacion() {
     if (cantidadTelefonos >= 1 && cantidadTelefonos <= cantidadTelefonos) {
       Telefono telefono = inventario[cantidadTelefonos - 1];
       telefono.abrirAplicacion();
