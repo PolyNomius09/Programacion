@@ -6,8 +6,10 @@ package com.mycompany.practica2;
 
 import java.util.Scanner;
 /**
- *
- * @author rafyt
+ * Main.java
+ * Practica 1
+ * @author Rafael Lopez Olvera
+ * date 2023-02-26
  */
 public class Programa6 {
     public static void ejecutar() {
