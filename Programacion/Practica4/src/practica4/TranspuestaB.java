@@ -5,8 +5,10 @@
 package practica4;
 
 /**
- *
- * @author Rafa
+ * TranspuestaB.java
+ * Practica 4
+ * @author Rafael Lopez Olvera
+ * date 2023-03-26
  */
 public class TranspuestaB {
     public static void ejecutar(int[][] matriz_B) {

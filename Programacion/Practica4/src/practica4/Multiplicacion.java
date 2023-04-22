@@ -5,8 +5,10 @@
 package practica4;
 
 /**
- *
- * @author Rafa
+ * Multiplicacion.java
+ * Practica 4
+ * @author Rafael Lopez Olvera
+ * date 2023-03-26
  */
 public class Multiplicacion {
     public static void ejecutar(int[][] matriz_A, int[][] matriz_B) {

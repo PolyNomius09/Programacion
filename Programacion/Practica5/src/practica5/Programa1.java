@@ -42,7 +42,7 @@ class Persona {
 }
 
 public class Programa1 {
-    public static void main(String[] args) {
+    public static void ejecutar() {
         Scanner scanner = new Scanner(System.in);
 
         Persona[] personas = new Persona[3];

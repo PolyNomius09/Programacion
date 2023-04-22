@@ -4,11 +4,15 @@
  */
 package practica3;
 
+import java.util.Random;
 /**
  *
  * @author rafyt
  */
 public class Practica3 {
+    ArbolDeBusqueda tree = new ArbolDeBusqueda();
+    Random Rand = new Random();
+    Nodo elpepe;
 
     /**
      * @param args the command line arguments
@@ -16,5 +20,4 @@ public class Practica3 {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
 }

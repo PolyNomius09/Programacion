@@ -5,8 +5,10 @@
 package practica4;
 
 /**
- *
- * @author Rafa
+ * ProductoPunto.java
+ * Practica 4
+ * @author Rafael Lopez Olvera
+ * date 2023-03-26
  */
 public class ProductoPunto {
     public static void ejecutar(int[][] matrizA, int[][] matrizB) {

@@ -103,7 +103,7 @@ class Lista {
 }
 
 public class Programa2 {
-    public static void main(String[] args) {
+    public static void ejecutar() {
         Scanner scanner = new Scanner(System.in);
         List<Alumno> listaAlumnos = new ArrayList<>();
 

@@ -5,8 +5,10 @@
 package practica4;
 
 /**
- *
- * @author Rafa
+ * InversaB.java
+ * Practica 4
+ * @author Rafael Lopez Olvera
+ * date 2023-03-26
  */
 public class InversaB {
     public static void ejecutar(int[][] matrizB) {
