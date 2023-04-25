@@ -5,20 +5,66 @@
 package practica3;
 
 /**
- *
- * @author rafyt
+ * Nodo.java
+ * Practica 3 Programa 1
+ * @author Rafael Lopez Olvera
+ * date 2023-04-17
+ * EDD
  */
 public class Nodo {
-        int dato;
-        String Nombre;
-        Nodo Izquierdo, Derecho;
-        public Nodo(int d, String nom){
-            this.dato=d;
-            this.Nombre=nom;
-            this.Izquierdo=null;
-            this.Derecho=null;
+    
+    private int valores;
+    private int conteo;
+    private Nodo NodoIzquierdo;
+    private Nodo NodoDerecho;
+    
+    //Constructor del nodo (ArbolDeBusqueda).
+
+    public Nodo(int valores){
+        this.valores = valores;
+        this.conteo = 1;
+        this.NodoIzquierdo = null;
+        this.NodoDerecho = null;
+    }
+
+    //Functon dar valor al Nodo
+    public void setValor(int valores) {
+        this.valores = valores;
+    }
+    
+    //Constructor para obtener los valores del Nodo
+    public int getValor() {
+        return valores;
+    }
+
+    //Constructor´para obtener el Nodo Derecho
+    public Nodo getNodoDerecho() {
+        return NodoDerecho;
+    }
+    
+    //Constructor´para obtener el Nodo Izquierdo
+    public Nodo getNodoIzquierdo() {
+        return NodoIzquierdo;
+    }
+    
+    //Funcion que inserta n Nodo (ArbolDeBusqueda)
+    public void InsertarNodo(int valores){
+        if(valores == this.valores){
+            this.conteo++;
+            return;
         }
-        public String toString (){
-        return Nombre + " Su Dato es " + dato;
+        if(valores < this.valores){
+            if(this.NodoIzquierdo == null){
+                this.NodoIzquierdo = new Nodo(valores);
+            }else{
+                this.NodoIzquierdo.InsertarNodo(valores);
+            }
+        }else{
+            if(this.NodoDerecho == null){
+                this.NodoDerecho = new Nodo(valores);
+            }else{
+                this.NodoDerecho.InsertarNodo(valores);
+            }
+        }   
     }
 }
