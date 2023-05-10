@@ -24,11 +24,11 @@ public class CajaRegistradora {
     public CajaRegistradora() {
         this.nombreTienda = nombreTienda;
         this.nombreCajero = nombreCajero;
-        this.inventario = new ArrayList<>(); // Inicializamos el atributo inventario en el constructor
+        this.inventario = inventario; // Inicializamos el atributo inventario en el constructor
         productos = new ArrayList<Producto>();
         cantidades = new ArrayList();
     }
-
+    
     // Métodos para registrar el nombre de la tienda y del cajero
     public void registrarNombreTienda(String nombre) {
         this.nombreTienda = nombre;
@@ -53,34 +53,33 @@ public class CajaRegistradora {
 
     // Método para iniciar una nueva venta
     public void nuevaVenta() throws IOException {
-    TicketVenta ticket = new TicketVenta(productos, nombreTienda, nombreCajero, cantidades);
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Seleccione el producto que desea vender:");
 
-    System.out.println("NUEVA VENTA");
     mostrarInventario();
 
-    Scanner scanner = new Scanner(System.in);
-
-    System.out.print("Ingrese el número de producto que desea vender: ");
-    int indiceProducto = scanner.nextInt();
-    scanner.nextLine(); // Consumir el salto de línea
-
-    System.out.print("Ingrese la cantidad de piezas que desea vender: ");
-    int cantidadPiezas = scanner.nextInt();
-    scanner.nextLine(); // Consumir el salto de línea
-
-    Producto producto = inventario.get(indiceProducto - 1);
-    if (producto.getCantidadExistencia() < cantidadPiezas) {
-        System.out.println("No hay suficientes piezas en existencia");
+    int productoSeleccionado = scanner.nextInt();
+    if (productoSeleccionado <= 0 || productoSeleccionado > this.productos.size()) {
+        System.out.println("Producto no válido");
         return;
     }
 
-    producto.vender(cantidadPiezas);
-    ticket.agregarProducto(producto, cantidadPiezas);
+    Producto producto = this.productos.get(productoSeleccionado - 1);
+    System.out.println("Ha seleccionado el producto: " + producto.getNombre());
+    System.out.println("Cantidad disponible: " + producto.getCantidadExistencia());
+
+    System.out.println("¿Cuántas piezas desea vender?");
+    int cantidad = scanner.nextInt();
+
+    if (cantidad > producto.getCantidadExistencia()) {
+        System.out.println("Cantidad insuficiente de productos");
+        return;
+    }
+
+    producto.vender(cantidad);
+    TicketVenta ticket = new TicketVenta(this.productos,this.nombreTienda, this.nombreCajero,cantidades);
+    ticket.agregarProducto(producto, cantidad);
     ticket.guardarTicket();
-}
-    
-    public CajaRegistradora(ArrayList<Producto> inventario) {
-        this.inventario = inventario;
     }
 
     public double calcularTotal(ArrayList<Producto> carrito) {
@@ -92,15 +91,18 @@ public class CajaRegistradora {
     }
 
     public void mostrarInventario() {
-    System.out.println("Inventario:");
-    System.out.println("-----------------------------------------------------------------");
-    System.out.printf("%-5s%-20s%-10s%-10s\n", "No.", "Producto", "Cantidad", "Precio");
-    System.out.println("-----------------------------------------------------------------");
-    for (int i = 0; i < inventario.size(); i++) {
-        Producto producto = inventario.get(i);
-        System.out.printf("%-5d%-20s%-10d%-10.2f\n", i + 1, producto.getNombre(), producto.getCantidadExistencia(), producto.getPrecioUnitario());
+    System.out.println("PRODUCTOS EN INVENTARIO");
+    System.out.printf("%-3s%-20s%-15s%-15s\n", "No.", "Producto", "Cantidad", "Precio");
+    System.out.println("---------------------------------------------------------");
+    ArrayList<Producto> productos = this.productos;
+    for (int i = 0; i < productos.size(); i++) {
+        Producto producto = productos.get(i);
+        int noProducto = i + 1;
+        double precioUnitario = producto.getPrecioUnitario();
+        int cantidadExistente = producto.getCantidadExistencia();
+        double total = precioUnitario * cantidadExistente;
+        System.out.printf("%-3d%-20s%-15.2f%-15d\n", noProducto, producto.getNombre(), precioUnitario, cantidadExistente);
         }
-    System.out.println("-----------------------------------------------------------------");
     }
     
     // Método para salir del programa
