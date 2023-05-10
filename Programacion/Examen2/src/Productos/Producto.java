@@ -53,4 +53,12 @@ public class Producto{
     public void setCantidadExistencia(int cantidadExistencia) {
         this.cantidadExistencia = cantidadExistencia;
     }
+    
+    public boolean vender(int cantidadPiezas) {
+    if (cantidadPiezas > 0 && cantidadPiezas <= cantidadExistencia) {
+        cantidadExistencia -= cantidadPiezas;
+        return true;
+    }
+    return false;
+    }
 }

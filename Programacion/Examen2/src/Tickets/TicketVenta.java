@@ -22,14 +22,24 @@ public class TicketVenta{
     private ArrayList<Producto> productos;
     private String nombreTienda;
     private String nombreCajero;
+    private ArrayList cantidades;
 
-    public TicketVenta(ArrayList<Producto> productos, String nombreTienda, String nombreCajero) {
+    public TicketVenta(ArrayList<Producto> productos, String nombreTienda, String nombreCajero, ArrayList cantidades) {
         this.productos = productos;
         this.nombreTienda = nombreTienda;
         this.nombreCajero = nombreCajero;
+        this.cantidades = new ArrayList<>();
+    }
+    
+    public void agregarProducto(Producto producto, int cantidad) {
+    productos.add(producto);
+    cantidades.add(cantidad);
     }
 
     public void imprimirTicket() {
+        String numeroTicket = null;
+        // Ruta donde se guardarán los tickets
+        String rutaArchivo = "TicketsCreados/ticket-" + numeroTicket + ".txt";
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         String fechaHora = dateFormat.format(date);
@@ -61,6 +71,9 @@ public class TicketVenta{
     }
 
     public void guardarTicket() throws IOException {
+        String numeroTicket = null;
+        // Ruta donde se guardarán los tickets
+        String rutaArchivo = "TicketsCreados/ticket-" + numeroTicket + ".txt";
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
         Date date = new Date();
         String fechaHora = dateFormat.format(date);
