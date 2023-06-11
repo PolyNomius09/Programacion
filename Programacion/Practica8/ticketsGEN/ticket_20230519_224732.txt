@@ -1,0 +1,5 @@
+Venta de gato:
+Nombre: sda
+Edad: 7
+Dueño: pepe
+Factor de ternura: 3

@@ -5,6 +5,14 @@
 package Productos;
 
 /**
+ * Producto.java
+ * Examen 2
+ * @author Rafael Lopez Olvera
+ * date 2023-05-08
+ * Programacion
+ */
+
+/**
  * Clase que representa un producto en la tienda.
  */
 public class Producto{
@@ -55,8 +63,8 @@ public class Producto{
     }
     
     public boolean vender(int cantidadPiezas) {
-    if (cantidadPiezas > 0 && cantidadPiezas <= cantidadExistencia) {
-        cantidadExistencia -= cantidadPiezas;
+    if (cantidadPiezas > 0 && cantidadPiezas <= precioUnitario) {
+        precioUnitario -= cantidadPiezas;
         return true;
     }
     return false;

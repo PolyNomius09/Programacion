@@ -11,6 +11,14 @@ import java.util.Scanner;
 import java.io.*;
 
 /**
+ * CajaRegistradora.java
+ * Examen 2
+ * @author Rafael Lopez Olvera
+ * date 2023-05-08
+ * Programacion
+ */
+
+/**
  * Clase que representa la caja registradora y coordina todas las operaciones de la misma.
  */
 public class CajaRegistradora {
@@ -59,6 +67,7 @@ public class CajaRegistradora {
     mostrarInventario();
 
     int productoSeleccionado = scanner.nextInt();
+    scanner.nextLine();
     if (productoSeleccionado <= 0 || productoSeleccionado > this.productos.size()) {
         System.out.println("Producto no válido");
         return;
@@ -66,20 +75,17 @@ public class CajaRegistradora {
 
     Producto producto = this.productos.get(productoSeleccionado - 1);
     System.out.println("Ha seleccionado el producto: " + producto.getNombre());
-    System.out.println("Cantidad disponible: " + producto.getCantidadExistencia());
-
+    System.out.println("Cantidad disponible: " +producto.getPrecioUnitario());
     System.out.println("¿Cuántas piezas desea vender?");
-    int cantidad = scanner.nextInt();
-
-    if (cantidad > producto.getCantidadExistencia()) {
-        System.out.println("Cantidad insuficiente de productos");
-        return;
-    }
-
-    producto.vender(cantidad);
-    TicketVenta ticket = new TicketVenta(this.productos,this.nombreTienda, this.nombreCajero,cantidades);
-    ticket.agregarProducto(producto, cantidad);
-    ticket.guardarTicket();
+        int cantidad = scanner.nextInt();
+        if (cantidad > producto.getPrecioUnitario()) {
+            System.out.println("Cantidad insuficiente de productos");
+            return;
+        }
+        if (producto.vender(cantidad)) {
+            TicketVenta ticket = new TicketVenta(this.productos, this.nombreTienda, this.nombreCajero, cantidades);
+            ticket.guardarTicket(cantidad);
+        }
     }
 
     public double calcularTotal(ArrayList<Producto> carrito) {

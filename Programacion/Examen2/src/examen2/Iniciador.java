@@ -9,10 +9,14 @@ import CajaRegistradora.CajaRegistradora;
 import BD.BaseDatos;
 import Productos.Producto;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 /**
- *
- * @author rafyt
+ * Main.java
+ * Examen 2
+ * @author Rafael Lopez Olvera
+ * date 2023-05-08
+ * Programacion
  */
 public class Iniciador {
     public static void main(String[] args) throws IOException {
@@ -46,19 +50,59 @@ public class Iniciador {
             case 1:
                 // Agregar producto
                 System.out.println("AGREGAR PRODUCTO");
+                String nombreProducto;
+                while (true) {
                 System.out.print("Ingrese el nombre del producto: ");
-                String nombreProducto = scanner.nextLine();
+                try {
+                nombreProducto = scanner.nextLine();
+                if (nombreProducto.matches("[a-zA-Z]+")) {
+                    break;
+                } else {
+                System.out.println("Error: Debe ingresar un valor de texto.");
+            }
+                } catch (InputMismatchException e) {
+                System.out.println("Error: Debe ingresar un valor de texto.");
+                scanner.nextLine(); // Limpiar el buffer de entrada
+                    }
+            }
     
+                String marcaProducto;
+                while (true) {
                 System.out.print("Ingrese la marca del producto: ");
-                String marcaProducto = scanner.nextLine();
+                try {
+                    marcaProducto = scanner.nextLine();
+                    if (marcaProducto.matches("[a-zA-Z]+")) {
+                    break;
+                } else {
+                    System.out.println("Error: Debe ingresar un valor de texto.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Debe ingresar un valor de texto.");
+                scanner.nextLine(); // Limpiar el buffer de entrada
+                }
+            }
     
-                System.out.print("Ingrese la cantidad existente del producto: ");
-                double cantidadExistencia = scanner.nextInt();
+                double cantidadExistencia = 0;
+                    while (true) {
+                try {
+            System.out.print("Ingrese la cantidad existente del producto: ");
+            cantidadExistencia = Double.parseDouble(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Error: La cantidad debe ser un valor numérico.");
+            }
+        }
     
+                int precioUnitario = 0;
+                    while (true) {
+                try {
                 System.out.print("Ingrese el precio unitario del producto: ");
-                int precioUnitario = (int) scanner.nextDouble();
-                scanner.nextLine(); // Consumir el salto de línea
-
+                precioUnitario = Integer.parseInt(scanner.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Error: El precio unitario debe ser un valor numérico.");
+            }
+        }
                  // Crear el producto y agregarlo al inventario de la caja registradora
                 Producto producto = new Producto(nombreProducto, marcaProducto, cantidadExistencia, precioUnitario);
                 cajaRegistradora.agregarProducto(producto);

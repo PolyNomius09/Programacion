@@ -1,0 +1,7 @@
+Ticket de Venta
+================
+Fecha: null
+Hora: null
+Artículo: null
+Cantidad: 0
+Total: 0.0
